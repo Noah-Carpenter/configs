@@ -2,42 +2,49 @@
 vim.wo.number = true
 vim.wo.numberwidth = 4
 vim.wo.wrap = false
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- # Package Manager
 require('packer').startup(function(use)
 	-- packer (main package manager)
 	use 'wbthomason/packer.nvim'
- 
+
 	-- mason (LSP Package Manager)
-	use { 
+	use {
 		'williamboman/mason.nvim',
 		run = ":MasonUpdate" -- :MasonUpdate updates the registry contents
 	}
-	 
+
+    use {
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig"
+    }
+
 	-- alpa-nvim (Pretty Home Pages)
-	use { 
+	use {
 		'goolord/alpha-nvim',
 		requires = { 'nvim-tree/nvim-web-devicons' },
 		config = function ()
 			require'alpha'.setup(require'alpha.themes.startify'.config)
 			end
 	}
-	 
+
 	-- nvim-cmp (auto-completion)
 	use 'hrsh7th/cmp-nvim-lsp'
-	use 'hrsh7th/cmp-buffer'	
+	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
-	use 'hrsh7th/cmp-cmdline'	
+	use 'hrsh7th/cmp-cmdline'
 	use 'hrsh7th/nvim-cmp'
- 
+
 	-- gitgutter (nvim git stuff)
 	use 'airblade/vim-gitgutter'
- 
+
 	-- lualine (status message bar on the bottom of the editor)
-	use { 
+	use {
 		'nvim-lualine/lualine.nvim',
 		requires = {'nvim-tree/nvim-web-devicons', opt = true}
-
 	}
 
 	-- nvim-visual-multi (allows multiple cursors)
@@ -54,30 +61,38 @@ require('packer').startup(function(use)
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
-	-- fzf (finding files in telescope)
-	use { 
-		'nvim-telescope/telescope-fzf-native.nvim', 
+	-- fzf (finding files in telescope
+	use {
+		'nvim-telescope/telescope-fzf-native.nvim',
 		-- required for windows
 		run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
 		-- potentially required option for linux
 		-- run = 'make'
 	}
-	
+
 	-- onedark (current theme)
 	use 'navarasu/onedark.nvim'
-	
+
 	-- vim-markdown (markdown syntax highlighting and more)
 	use {
 		'preservim/vim-markdown',
 		requires = 'godlygeek/tabular'
 	}
 
-	
 end)
 
 -- # Package Setup
 -- ## Mason
 require("mason").setup()
+require("mason-lspconfig").setup({
+    -- ### Required to be Installed LSPs
+    ensure_installed = {
+        -- lua lsp
+        "lua_ls",
+        -- REQUIRES NODEJS json lsp
+        "jsonls",
+    },
+})
 
 -- ## nvim-cmp
 local cmp = require'cmp'
@@ -147,9 +162,8 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 -- commented out until needed
 
---require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
---	capabilities = capabilities
---}
+require('lspconfig')['lua_ls'].setup({})
+require('lspconfig')['jsonls'].setup({})
 
 -- ## lualine
 require('lualine').setup()
@@ -160,3 +174,5 @@ require('nvim-tree').setup()
 -- ## onedark
 require('onedark').load()
 
+-- ## vim-markdown
+vim.g.vim_markdown_folding_disabled = 1
