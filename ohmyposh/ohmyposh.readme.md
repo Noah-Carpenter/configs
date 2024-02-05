@@ -1,5 +1,6 @@
 # Oh - My - Posh
 [Github](https://github.com/jandedobbeleer/oh-my-posh)
+
 [Main Page](https://ohmyposh.dev/)
 
 ## General
