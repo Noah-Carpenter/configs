@@ -20,3 +20,4 @@ oh-my-posh init pwsh --config '<location-of-your-repo>\ohmyposh\draculaXonehalf.
 
 #### Other windows setup to make things nice
 - Set powershell background in default to `40, 44, 52` to make everything a nice grey.
+    - **NOTE: when you do this also do `Set-PSReadLineOption -Colors @{"Parameter"="$([char]0x1b)[33m"}` or you wont be able to see command operator.
