@@ -9,6 +9,8 @@ Alot of my config at the moment is ripped straight from [John McBride's Video](h
 ### Useful commands
 - `:so %` load the current file as a config file.
 - `dd` delete the current line
+- `<n` - move section n number of tabs left
+- `>n` - move section n number of tabs right
 
 ## Setup
 1. Download NeoVim (Duh)
