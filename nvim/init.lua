@@ -71,7 +71,7 @@ require('packer').startup(function(use)
 	}
 
 	-- onedark (current theme)
-	use 'navarasu/onedark.nvim'
+    use "olimorris/onedarkpro.nvim"
 
 	-- vim-markdown (markdown syntax highlighting and more)
 	use {
@@ -172,7 +172,7 @@ require('lualine').setup()
 require('nvim-tree').setup()
 
 -- ## onedark
-require('onedark').load()
+vim.cmd("colorscheme onedark")
 
 -- ## vim-markdown
 vim.g.vim_markdown_folding_disabled = 1

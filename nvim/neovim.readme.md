@@ -93,8 +93,10 @@ Essentially a super powerful grep with a nice ui.\
 ### [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 This allows fzf (fuzzy finding) functionality within telescope.
 
-### [onedark.nvim](https://github.com/navarasu/onedark.nvim)
+### [onedarkpro.nvim](https://github.com/olimorris/onedarkpro.nvim)
 This is just the theme I use on everything.
+
+*NOTE: This theme does not work on the default macOs terminal, you will need to install iTerm2 otherwise everything will be blue otherwise you need to comment out the initialise command*
 
 ### [vim-markdown](https://github.com/preservim/vim-markdown)
 This adds a bunch of markdown functionality for vim.
