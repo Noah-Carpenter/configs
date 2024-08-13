@@ -79,6 +79,9 @@ require('packer').startup(function(use)
 		requires = 'godlygeek/tabular'
 	}
 
+    -- undo-tree (visual representation of undo re-do)
+    use 'mbbill/undotree'
+
 end)
 
 -- # Package Setup
@@ -89,14 +92,14 @@ require("mason-lspconfig").setup({
     ensure_installed = {
         -- lua lsp
         "lua_ls",
-        -- json
-        "biome"
+        -- go
+        "gopls"
     },
 })
 
 -- ### lsp servers
 require('lspconfig')['lua_ls'].setup({})
-require('lspconfig')['biome'].setup({})
+require('lspconfig')['gopls'].setup({})
 
 
 -- ## nvim-cmp

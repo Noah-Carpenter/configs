@@ -73,6 +73,9 @@ Gives us the nice line at the bottom of the screen telling us about what mode, b
 ### [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
 Allows you to create multiple cursors on a word.
 
+### [undotree](https://github.com/mbbill/undotree)
+Creates a visual representation of your undo's.
+
 ### Usage
 - `Ctrl-N` - create 1 cursor at the next instance of selected.
 
